@@ -15,15 +15,16 @@ require("dotenv").config();
 //Set up default mongoose connection
 const mongoose = require("mongoose");
 const mongoDB = `
-mongodb+srv://fefe:000sKjtDXXrsbeIx@cluster0.4t24b.mongodb.net/blog?retryWrites=true&w=majority`;
+mongodb+srv://fefe:${process.env.DB_PASS}.4t24b.mongodb.net/blog?retryWrites=true&w=majority`;
 mongoose.connect(mongoDB, { useNewUrlParser: true, useUnifiedTopology: true });
 //Get the default connection
 const db = mongoose.connection;
 
-
+var cors = require('cors');
 const app = express();
-
-
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -5,7 +5,7 @@ var router = express.Router();
 
 //Display list of all blogs ---- INDEX
 router.get('/', (req, res) => {
-  return res.send('Received a GET HTTP method');
+  return res.json('Received a GET HTTP method');
 });
  
 //Create new blog ----- NEW
