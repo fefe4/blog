@@ -12,13 +12,13 @@ router.get('/', blogController.get_blogs)
 // });
  
 //Create new blog ----- NEW
-router.get('/new')
+router.get('/new', blogController.get_new)
 
 //Add new blog to DB ------CREATE
 router.post('/', blogController.post_blog)
 
 //Show info about one blog -----SHOW
-router.get('/:id')
+router.get('/:id', blogController.)
  
 
 //show Edit form for one blog ------ EDIT
