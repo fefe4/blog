@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose')
   const { Schema } = mongoose;
 
   const BlogSchema = new Schema({
@@ -11,7 +11,9 @@ import mongoose from 'mongoose';
     hidden: Boolean,
     // votes: Number,
     // favs:  Number,
-    categorie: [{type: Schema.Types.ObjectId, ref: 'Categorie', required: true}]
+    // categorie: [{type: Schema.Types.ObjectId, ref: 'Categorie', required: true}]
+    categorie: [{type: Schema.Types.ObjectId, ref: 'Categorie'}]
+
   });
 
   BlogSchema

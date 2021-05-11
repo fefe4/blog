@@ -1,12 +1,15 @@
 var express = require('express');
 var router = express.Router();
+const blogController = require('../controllers/blogController')
 
 //Resful Routes for Blogs
 
 //Display list of all blogs ---- INDEX
-router.get('/', (req, res) => {
-  return res.json('Received a GET HTTP method');
-});
+
+router.get('/', blogController.get_blogs)
+// router.get('/', (req, res) => {
+//   return res.json('Received a GET HTTP method');
+// });
  
 //Create new blog ----- NEW
 router.get('/new')

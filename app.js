@@ -23,7 +23,7 @@ const db = mongoose.connection;
 var cors = require('cors');
 const app = express();
 app.use(cors({
-  origin: 'http://localhost:3000'
+  origin: 'https://speeding-crater-58925.postman.co/'
 }));
 
 // view engine setup
