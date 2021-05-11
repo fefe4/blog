@@ -1,4 +1,4 @@
-const Blogs = require('../models/blogs');
+const Blog = require('../models/blogs');
 const { body,validationResult } = require('express-validator');
 
 exports.get_blogs = function (req, res) {
@@ -16,17 +16,19 @@ exports.post_blog = [
 
   function(req, res, next) {
     const errors = validationResult(req);
-    blog = new Blog ({
+    const blog = new Blog ({
       title:req.body.title,
       description:req.body.description,
-      author:"test man",
+      // author:"test man",
       body:req.body.body,
     })
-    if (!errors.isEmpty()) {}
+    if (!errors.isEmpty()) {
+      res.send(errors)
+    }
     else {
       blog.save(function(err){
         if(err){return next(err);}
-
+        res.send('pepe')
       })
     }
   }

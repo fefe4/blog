@@ -4,7 +4,9 @@ const mongoose = require('mongoose')
   const BlogSchema = new Schema({
     title: String, // String is shorthand for {type: String}
     description: String,
+    // author: {type: Schema.Types.ObjectId, ref: 'User', required: true},
     author: {type: Schema.Types.ObjectId, ref: 'User', required: true},
+
     body: String,
     // comments: [{ body: String, date: Date }],
     date: { type: Date, default: Date.now },

@@ -15,9 +15,7 @@ router.get('/', blogController.get_blogs)
 router.get('/new')
 
 //Add new blog to DB ------CREATE
-router.post('/', (req, res) => {
-  return res.send('Received a POST HTTP method');
-});
+router.post('/', blogController.post_blog)
 
 //Show info about one blog -----SHOW
 router.get('/:id')
