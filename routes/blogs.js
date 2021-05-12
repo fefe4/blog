@@ -25,13 +25,9 @@ router.get('/:id', blogController.get_specific_blog)
 router.get('/:id/edit', )
 
 //Update a particular blog -------- UPDATE
-router.put('/:id', (req, res) => {
-  return res.send('Received a PUT HTTP method');
-});
+router.put('/:id', blogController.edit_blog)
  
 //delete a particular blog -------- DELETE
-router.delete('/:id', (req, res) => {
-  return res.send('Received a DELETE HTTP method');
-})
+router.delete('/:id', blogController.delete_blog)
 
 module.exports = router;

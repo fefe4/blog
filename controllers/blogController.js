@@ -77,6 +77,6 @@ exports.edit_blog = [
   },
 ];
 
-exports.delete_post = function (req, res) {
+exports.delete_blog = function (req, res) {
   findByIdAndDelete(req.params.id)
 }
