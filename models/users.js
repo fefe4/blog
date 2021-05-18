@@ -7,12 +7,13 @@ const UserSchema = new Schema({
   JoiningDate: { type: Date, default: Date.now },
   // mail: {},
   // profileimage: String,
-  // admin:,
-  //birthday {type:Date}
+  admin: { type: Boolean },
+  birthday: { type: Date },
 });
 
 UserSchema.virtual("url").get(function () {
   return "/user/" + this._id;
 });
+
 
 module.exports = mongoose.model("User", UserSchema);
