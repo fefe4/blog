@@ -3,15 +3,15 @@ const { body, validationResult } = require("express-validator");
 const { findByIdAndUpdate } = require("../models/blogs");
 
 exports.get_blogs = function (req, res) {
-  Blogs.find({}, "title author")
+  Blog.find({}, "title author")
     .populate("author")
     .exec(function (err, blogs) {
-      res.json({ title: "blogs", blog_list: blogs });
+      res.json({ "title": "pepito", "blog_list": blogs[0]});
     });
 };
 
 exports.get_new_form = function (req, res) {
-  res.send("To-do");
+  res.send("To-do2323");
 };
 
 exports.post_blog = [
@@ -47,7 +47,7 @@ exports.get_specific_blog = function (req, res) {
       if (err) {
         return next(err);
       }
-      res.json({ blog_info: blog });
+      res.json({ pepe: blog.title });
     });
 };
 
