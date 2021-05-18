@@ -1,5 +1,6 @@
 const User = require("../models/users");
 const { body, validationResult } = require("express-validator");
+const bcrypt = require("bcryptjs");
 
 exports.user_signUp = [
   body("username", "username, can not be empty ")
@@ -20,23 +21,30 @@ exports.user_signUp = [
     .escape(),
 
   function (req, res, next) {
-    const erros = validationResult;
-    const user = new User({
-      username: req.body.username,
-      password: req.body.password,
-      admin: false,
-      birthday: req.body.Date,
-    });
-    if (!errors.isEmpty()) {
-      res.send(erros);
-    } else {
-      user.save(function (err) {
-        if (err) {
-          return next(err);
-        } else {
-          res.send("user created");
-        }
+    const errors = validationResult(req);
+    bcrypt.hash(req.body.password, 10, (err, hashedPassword) => {
+      if (err) {
+        next(err);
+      }
+      const user = new User({
+        username: req.body.username,
+        password: hashedPassword,
+        admin: false,
+        birthday: req.body.Date,
       });
-    }
+      if (!errors.isEmpty()) {
+        res.send(errors);
+      } else {
+        user.save(function (err) {
+          if (err) {
+            return next(err);
+          } else {
+            res.send("user created");
+          }
+        });
+      }
+    });
   },
 ];
+
+// exports.user_logIn = 
