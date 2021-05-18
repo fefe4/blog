@@ -7,3 +7,12 @@ router.get('/', function(req, res, next) {
 });
 
 module.exports = router;
+
+/*Sign-up user*/
+router.post('/sign-up',)
+/*Log-in user*/
+router.post('/log-in',)
+/*Log-out*/
+router.post('/log-out',)
+
+
