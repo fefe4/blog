@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 /*Sign-up user*/
 router.post('/sign-up', userController.user_signUp)
 /*Log-in user*/
-router.post('/log-in',)
+router.post('/log-in', userController.user_logIn)
 /*Log-out*/
 router.post('/log-out',)
 
