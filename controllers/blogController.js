@@ -1,6 +1,8 @@
 const Blog = require("../models/blogs");
 const { body, validationResult } = require("express-validator");
 const { findByIdAndUpdate } = require("../models/blogs");
+const jwt = require('jsonwebtoken');
+
 
 exports.get_blogs = function (req, res) {
   Blog.find({}, "title author")
@@ -11,7 +13,21 @@ exports.get_blogs = function (req, res) {
 };
 
 exports.get_new_form = function (req, res) {
-  res.send("To-do2323");
+  jwt.verify(req.token, 'your_jwt_secret', (err, authData) => {
+    console.log(req.token)
+    res.json({
+      message: 'Post created....',
+     
+    })
+    if(err) {
+      res.sendStatus(403);
+    } else {
+      res.json({
+        message: 'Post created....',
+        authData
+      })
+    }
+  })
 };
 
 exports.post_blog = [

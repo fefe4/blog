@@ -10,6 +10,8 @@ const passportJWT = require("passport-jwt");
 const JWTStrategy = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 
+
+
 exports.user_signUp = [
   body("username", "username, can not be empty ")
     .trim()
@@ -93,7 +95,8 @@ exports.user_logIn = [
     .withMessage("must contain a capital letter")
     .escape(),
 
-   function (req, res, next) {
+
+   function (req, res) {
     passport.authenticate("local", { session: false }, (err, user, info) => {
       console.log(user)
       if (err || !user) {
