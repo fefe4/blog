@@ -4,6 +4,7 @@ const { findByIdAndUpdate } = require("../models/blogs");
 const jwt = require('jsonwebtoken');
 
 
+
 exports.get_blogs = function (req, res) {
   Blog.find({}, "title author")
     .populate("author")
@@ -13,21 +14,16 @@ exports.get_blogs = function (req, res) {
 };
 
 exports.get_new_form = function (req, res) {
-  jwt.verify(req.token, 'your_jwt_secret', (err, authData) => {
-    console.log(req.token)
-    res.json({
-      message: 'Post created....',
-     
-    })
-    if(err) {
-      res.sendStatus(403);
-    } else {
-      res.json({
-        message: 'Post created....',
-        authData
-      })
-    }
-  })
+
+  // jwt.verify(req.token, "your_jwt_secret", function(err, decoded) {
+  //   if (err) {res.send(err)}
+  //    // bar
+  //   else {
+  //     res.send(decoded)
+  //   }
+  // });
+  console.log("pepe")
+  res.send("holo")
 };
 
 exports.post_blog = [
