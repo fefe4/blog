@@ -9,7 +9,7 @@ exports.get_blogs = function (req, res) {
   Blog.find({}, "title author")
     .populate("author")
     .exec(function (err, blogs) {
-      res.json({ "title": "pepito", "blog_list": blogs[0]});
+      res.json({ "title": "pepito", "blog_list": blogs});
     });
 };
 
