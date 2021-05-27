@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken');
 
 
 exports.get_blogs = function (req, res) {
-  Blog.find({}, "title author")
+  Blog.find({}, )
     .populate("author")
     .exec(function (err, blogs) {
       res.json({ "title": "pepito", "blog_list": blogs});
@@ -59,7 +59,7 @@ exports.get_specific_blog = function (req, res) {
       if (err) {
         return next(err);
       }
-      res.json({ pepe: blog.title });
+      res.json({ blog_:blog });
     });
 };
 
