@@ -52,7 +52,7 @@ exports.post_blog = [
   },
 ];
 
-exports.get_specific_blog = function (req, res) {
+exports.get_specific_blog = function (req, res, next) {
   Blog.findById(req.params.id)
     .populate("author")
     .exec(function (err, blog) {
@@ -80,7 +80,7 @@ exports.edit_blog = [
     if (!errors.isEmpty()) {
       res.send(errors);
     } else {
-      findByIdAndUpdate(req.params.id, blog, function (err, thisblog) {
+      Blog.findByIdAndUpdate(req.params.id, blog, {}, function (err, thisblog) {
         if (err) {
           return next(err);
         }
@@ -90,5 +90,10 @@ exports.edit_blog = [
 ];
 
 exports.delete_blog = function (req, res) {
-  findByIdAndDelete(req.params.id)
+  Blog.findByIdAndRemove(req.params.id, function (err) {
+    if (err) {
+      return next(err);
+    }
+    else res.send("pepe")
+  })
 }
